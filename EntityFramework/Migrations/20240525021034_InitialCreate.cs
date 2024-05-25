@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace EnityFramework.Migrations
+namespace EntityFramework.Migrations
 {
     /// <inheritdoc />
     public partial class InitialCreate : Migration
@@ -16,7 +16,7 @@ namespace EnityFramework.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -29,24 +29,23 @@ namespace EnityFramework.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    CategoryId = table.Column<int>(type: "int", nullable: false)
+                    name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    categoryId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Products", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Products_Categories_CategoryId",
-                        column: x => x.CategoryId,
+                        name: "FK_Products_Categories_categoryId",
+                        column: x => x.categoryId,
                         principalTable: "Categories",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Products_CategoryId",
+                name: "IX_Products_categoryId",
                 table: "Products",
-                column: "CategoryId");
+                column: "categoryId");
         }
 
         /// <inheritdoc />
