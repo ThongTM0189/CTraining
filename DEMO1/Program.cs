@@ -92,6 +92,7 @@ public class Program
         // primary class
         Class1 user = new(123);
     }
+
     // null-condition có thể sử dụng cho cả function
     public static int? TestNullCondition(int? age)
     {
