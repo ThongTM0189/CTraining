@@ -28,10 +28,7 @@ namespace Chapter3_demo2_OOP
                 switch (option)
                 {
                     case 1:
-                        foreach (var item in categoryService.GetCategories())
-                        {
-                            Console.WriteLine(item);
-                        }
+                        categoryService.GetCategories().ForEach(x => Console.WriteLine(x));
                         break;
                     case 2:
                         Add(categoryService);
