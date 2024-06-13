@@ -49,6 +49,7 @@ namespace Chapter3_demo2_OOP.DataAccess
             {
                 Delete(cateUpdate.Id);
                 Insert(category);
+                categories = categories.OrderBy(categorie => categorie.Id).ToList();
             }
         }
     }

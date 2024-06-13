@@ -13,11 +13,11 @@ namespace Chapter3_demo2_OOP
             do
             {
                 PrintMenu();
-                option = ChooseOptionOrTryParseINT();
+                option = ChooseOption();
                 if (option == 6)
                 {
                     Console.WriteLine("Do you wanna quit the program ? 1: yes | 2: no");
-                    int quit = ChooseOptionOrTryParseINT(true);
+                    int quit = ChooseOption(true);
                     if (quit == 1)
                     {
                         break;
@@ -62,26 +62,23 @@ namespace Chapter3_demo2_OOP
             Console.Write("your option: ");
         }
 
-        static int ChooseOptionOrTryParseINT(bool actionQuit = false)
+        static int ChooseOption(bool actionQuit = false) // default value nếu kh có parameter thì mặc định = false
         {
-            if (!actionQuit)
+            while (true)
             {
-                int result = 0;
-                while (true)
+                if (Int32.TryParse(Console.ReadLine(), out int result))
                 {
-                    if (Int32.TryParse(Console.ReadLine(), out result))
+                    // select option menu
+                    if (!actionQuit)
                     {
+                        if(result > 6 || result < 1)
+                        {
+                            Console.WriteLine("Please choose option form 1 to 6 !!");
+                            continue;
+                        }
                         return result;
                     }
-                    Console.WriteLine("Please just input number, try again!!");
-                }
-            }
-            else
-            {
-                int result = 0;
-                while (true)
-                {
-                    if (Int32.TryParse(Console.ReadLine(), out result))
+                    else// option quit
                     {
                         if (result == 1 || result == 2)
                         {
@@ -90,8 +87,25 @@ namespace Chapter3_demo2_OOP
                         Console.WriteLine("only choose 1: yes or 2: no");
                         continue;
                     }
-                    Console.WriteLine("Please just input number, try again!!");
                 }
+                Console.WriteLine("Please just input number, try again!!");
+            }
+        }
+
+        static void tryPareInt(ref int result)
+        {
+            while (true)
+            {
+                if (Int32.TryParse(Console.ReadLine(), out result)) //"123"
+                {
+                    if (result < 0)
+                    {
+                        Console.WriteLine("Number should not negative!!");
+                        continue;
+                    }
+                    break;
+                }
+                Console.WriteLine("Please just input number, try again!!");
             }
         }
 
@@ -101,12 +115,14 @@ namespace Chapter3_demo2_OOP
             while (true)
             {
                 Console.Write("Category ID: ");
-                id = ChooseOptionOrTryParseINT();
+                tryPareInt(ref id);
                 Category checCategory = service.GetByID(id);
-                if (checCategory == null)
+                if (checCategory != null)
                 {
-                    break;
+                    Console.WriteLine("ID was existed");
+                    continue;
                 }
+                break;
             }
             Console.Write("Category Name: ");
             string name = Console.ReadLine();
@@ -120,18 +136,17 @@ namespace Chapter3_demo2_OOP
             while (true)
             {
                 Console.Write("Category ID: ");
-                id = ChooseOptionOrTryParseINT();
+                tryPareInt(ref id);
                 Category category = service.GetByID(id);
                 if (category != null)
                 {
                     Console.Write("Category Name to update: ");
-                    string name = Console.ReadLine();
-                    category.Name = name;
+                    category.Name = Console.ReadLine();
                     service.Update(category);
                     break;
                 }
 
-                Console.WriteLine("ID is not existed, ttry again!! ");
+                Console.WriteLine("Category is not existed, try again!! ");
             }
         }
 
@@ -141,7 +156,7 @@ namespace Chapter3_demo2_OOP
             while (true)
             {
                 Console.Write("Category ID: ");
-                id = ChooseOptionOrTryParseINT();
+                tryPareInt(ref id);
                 Category category = service.GetByID(id);
                 if (category != null)
                 {
@@ -158,7 +173,7 @@ namespace Chapter3_demo2_OOP
             while (true)
             {
                 Console.Write("Category ID: ");
-                id = ChooseOptionOrTryParseINT();
+                tryPareInt(ref id);
                 Category category = service.GetByID(id);
                 if (category != null)
                 {
