@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DEMO1", "DEMO1\DEMO1.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFramework", "EntityFramework\EntityFramework.csproj", "{0D88938C-224E-4947-BB5C-9FF5DE03DEC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF_DEMO", "WPF_DEMO\WPF_DEMO.csproj", "{AD50F8AB-62B0-402F-82D3-65E9089B3AF3}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{0D88938C-224E-4947-BB5C-9FF5DE03DEC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D88938C-224E-4947-BB5C-9FF5DE03DEC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D88938C-224E-4947-BB5C-9FF5DE03DEC8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AD50F8AB-62B0-402F-82D3-65E9089B3AF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AD50F8AB-62B0-402F-82D3-65E9089B3AF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AD50F8AB-62B0-402F-82D3-65E9089B3AF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AD50F8AB-62B0-402F-82D3-65E9089B3AF3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

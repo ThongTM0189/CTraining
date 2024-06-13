@@ -18,6 +18,13 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="DEMO1">
+      <HintPath>bin\Debug\net7.0\DEMO1.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

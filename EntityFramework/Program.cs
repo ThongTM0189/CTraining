@@ -1,20 +1,31 @@
 ﻿
+using DEMO1;
+using EntityFramework.DataAccess;
+
 internal class Program
 {
     private static void Main(string[] args)
     {
-        //MyStoreContext context = new MyStoreContext();
+        MyStoreContext context = new MyStoreContext();
+        List<Product> products = context.Products.ToList();
+        List<Category> categories = context.Categories.ToList();
+        
+        //selcet all
+        products.ForEach(p => Console.WriteLine(p.Category.Name));
+        foreach (var item in categories[0].Products)
+        {
+            Console.WriteLine(item.Name);
+        }
 
-        // Selection all
-        //List<Product> products = context.Products.ToList();
-        //List<Category> categories = context.Categories.ToList();
-
-        //products.ForEach(p => Console.WriteLine(p.Category.Name));
-        //foreach (var item in categories[0].Products)
-        //{
-        //    Console.WriteLine(item.Name);
-        //}
-
+        products.FirstOrDefault(x => x.Name == "code");
+        products.Where(x => x.Name.Contains("123")).ToList();
+        products.Remove(new Product());
+        products.Skip(5).ToList();
+        products.Sum(x => x.CategoryId);
+        products.OrderBy(x => x.CategoryId).ToList();
+        products.Reverse();
+        products.Last();
+        products.First();
         // Craete
         // Bởi vì product đang có quan hệ với category và khoá ngoại là categoriId
         // Lúc này insert nó kh thấy có add khoá ngoại nhưng
