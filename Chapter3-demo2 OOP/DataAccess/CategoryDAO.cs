@@ -27,10 +27,12 @@ namespace Chapter3_demo2_OOP.DataAccess
         {
             categories.Add(category);
         }
+
         public static Category GetByID(int categoryID)
         {
             return categories.FirstOrDefault(x => x.Id == categoryID);
         }
+
         public static void Delete(int categoryID)
         {
             Category category = GetByID(categoryID);
@@ -39,6 +41,7 @@ namespace Chapter3_demo2_OOP.DataAccess
                 categories.Remove(category);
             }
         }
+
         public static void Update(Category category)
         {
             Category cateUpdate = GetByID(category.Id);
