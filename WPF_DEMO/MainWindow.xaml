@@ -6,7 +6,40 @@
         xmlns:local="clr-namespace:WPF_DEMO"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Button x:Name="btnClick" Height="100" Width="100" Click="btnClick_Click">click me</Button>
+    <Grid Margin="0,0,0,-116">
+
+        <ListView x:Name="lvData" Margin="0,249,0,0">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Product ID" Width="100" DisplayMemberBinding="{Binding Path=Id}" />
+                    <GridViewColumn Header="Product Name" Width="100" DisplayMemberBinding="{Binding Path=Name}" />
+                    <GridViewColumn Header="Brand" Width="100" DisplayMemberBinding="{Binding Path=Brand}" />
+                    <GridViewColumn Header="Price" Width="100" DisplayMemberBinding="{Binding Path=Prive}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Content="ID: " HorizontalAlignment="Left" Margin="28,31,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" x:Name="tbId" 
+                 Margin="55,35,0,0" TextWrapping="Wrap" 
+                 Text="{Binding Path=Id, Mode=OneWay}" 
+                 DataContext="{Binding ElementName=lvData, Path=SelectedItem}"
+                 VerticalAlignment="Top" Width="179"/>
+        <Label Content="Name: " HorizontalAlignment="Left" Margin="10,58,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" x:Name="tbName" Margin="55,62,0,0" TextWrapping="Wrap" 
+                 Text="{Binding Path=Name, Mode=OneWay}" 
+                 DataContext="{Binding ElementName=lvData, Path=SelectedItem}" VerticalAlignment="Top" Width="179"/>
+        <Label Content="Brand: " HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" x:Name="tbBrand" Margin="55,91,0,0" TextWrapping="Wrap" 
+                 Text="{Binding Path=Brand, Mode=OneWay}" 
+                DataContext="{Binding ElementName=lvData, Path=SelectedItem}"
+                 VerticalAlignment="Top" Width="179"/>
+        <Label Content="price: " HorizontalAlignment="Left" Margin="16,114,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" x:Name="tbPrice" Margin="55,118,0,0" TextWrapping="Wrap" 
+                 Text="{Binding Path=Prive, Mode=OneWay}" 
+                    DataContext="{Binding ElementName=lvData, Path=SelectedItem}"
+                 VerticalAlignment="Top" Width="179"/>
+        <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="16,178,0,0" VerticalAlignment="Top" Click="btnAdd_Click"/>
+        <Button Content="Update" x:Name="btnUpdate" HorizontalAlignment="Left" Margin="64,178,0,0" VerticalAlignment="Top" Click="btnUpdate_Click"/>
+        <Button Content="Delete" x:Name="btnDelete" HorizontalAlignment="Left" Margin="130,178,0,0" VerticalAlignment="Top" Click="btnDelete_Click"/>
     </Grid>
 </Window>
