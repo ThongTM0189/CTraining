@@ -26,7 +26,7 @@ namespace Chapter_7___demo_5
         public MainWindow()
         {
             InitializeComponent();
-            tbID.IsEnabled = false;
+            //tbID.IsEnabled = false;
             loadData();
         }
 
@@ -38,22 +38,22 @@ namespace Chapter_7___demo_5
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            string name = tbName.Text;
-            if (!Int32.TryParse(tbID.Text, out int id))
+            try
             {
-                MessageBox.Show("ID must input number");
-                return;
-            }
+                string name = tbName.Text;
+                if (!Int32.TryParse(tbID.Text, out int id)) throw new Exception("ID must input number");
 
-            bool check = categories.FirstOrDefault(x => x.Id == id) != null;
-            if (check)
+                bool check = categories.FirstOrDefault(x => x.Id == id) != null;
+                if (check) throw new Exception("ID was existed");
+
+                categories.Add(new Category { Id = id, Name = name });
+                loadData();
+            }
+            catch(Exception ex)
             {
-                MessageBox.Show("ID was existed");
-                return;
+                MessageBox.Show(ex.Message);
             }
-
-            categories.Add(new Category { Id = id, Name = name });
-            loadData();
+            
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
