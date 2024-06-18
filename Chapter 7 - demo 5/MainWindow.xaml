@@ -20,6 +20,8 @@
             <Button Width="100" Content="Delete" x:Name="btnDelete" Click="btnDelete_Click"/>
             <Button Width="100" Content="Update" x:Name="btnUpdate" Click="btnUpdate_Click" />
         </StackPanel>
+        <Label Content="Search Name:" Margin="144,179,555,229"/>
+        <TextBox x:Name="tbSearch" Width="300" Margin="250,167,250,217" TextChanged="tbSearch_TextChanged"/>
         <DataGrid Grid.Row="2" x:Name="dbCategory" Background="LightBlue" Margin="0,234,0,0">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="*" Header="Category ID" Binding="{Binding Id}"/>
