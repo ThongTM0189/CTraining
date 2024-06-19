@@ -91,7 +91,10 @@ namespace Chapter3_demo2_OOP
                 Console.WriteLine("Please just input number, try again!!");
             }
         }
+        static void tryqweqwe(ref Category result)
+        {
 
+        }
         static void tryPareInt(ref int result)
         {
             while (true)
