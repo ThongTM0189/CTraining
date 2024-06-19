@@ -36,21 +36,22 @@ namespace Chapter3_demo2_OOP.DataAccess
         public static void Delete(int categoryID)
         {
             Category category = GetByID(categoryID);
-            if(category != null)
+            if (category != null)
             {
                 categories.Remove(category);
             }
         }
 
-        public static void Update(Category category)
+        public static void Update(Category categoryUpdate)
         {
-            Category cateUpdate = GetByID(category.Id);
-            if (cateUpdate != null)
+            categories.ForEach(cate =>
             {
-                Delete(cateUpdate.Id);
-                Insert(category);
-                categories = categories.OrderBy(categorie => categorie.Id).ToList();
-            }
+                if (cate.Id == categoryUpdate.Id)
+                {
+                    cate.Name = categoryUpdate.Name;
+                    return;
+                }
+            });
         }
     }
 }
