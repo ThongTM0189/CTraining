@@ -12,9 +12,6 @@ using System.Windows.Shapes;
 
 namespace PE
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         WpfproductContext wpfproductContext;
@@ -89,7 +86,8 @@ namespace PE
                     throw new Exception("ID is not correct format");
 
                 var pro = searchByid(id);
-                MessageBoxResult result = MessageBox.Show($"Do you wannt delete {pro.Name}", "Delete Comfirm", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                MessageBoxResult result = MessageBox.Show($"Do you wannt delete {pro.Name}", 
+                    "Delete Comfirm", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
                 if (result == MessageBoxResult.No) return;
 
@@ -113,7 +111,8 @@ namespace PE
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             string search = tbSearch.Text.ToLower();
-            var listSearch = wpfproductContext.Products.Where(x => x.Name.ToLower().Contains(search)).ToList();
+            var listSearch = wpfproductContext.Products.Where(x => 
+                            x.Name.ToLower().Contains(search)).ToList();
             loadData(listSearch);
         }
 
@@ -125,7 +124,8 @@ namespace PE
                     !Decimal.TryParse(tbPriceEnd.Text, out decimal priceEnd))
                     throw new Exception("Price is not correct format");
 
-                var list = wpfproductContext.Products.Where(x => x.Prive > priceStart && x.Prive < priceEnd).ToList();
+                var list = wpfproductContext.Products.Where(x => 
+                             x.Prive > priceStart && x.Prive < priceEnd).ToList();
                 loadData(list);
             }
             catch (Exception ex)
